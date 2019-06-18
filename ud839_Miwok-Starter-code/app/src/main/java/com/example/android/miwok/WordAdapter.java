@@ -3,6 +3,7 @@ package com.example.android.miwok;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +15,18 @@ import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
 
-    public WordAdapter(Activity context, ArrayList<Word> Words) {
-        super(context, 0, Words);
+    private int mColorResourceID;
+
+    public WordAdapter(Activity context, ArrayList<Word> Words, int colorResourceId) {
+        super(context,0, Words);
+        mColorResourceID= colorResourceId;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Check if the existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
-        if(listItemView == null) {
+        if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.list_item, parent, false);
         }
@@ -42,9 +46,23 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // set this text on the number TextView
         defaultTextView.setText(currentWord.getDefaultTranslation());
 
+        ImageView iconView = (ImageView) listItemView.findViewById(R.id.image);
+
+        if (currentWord.hasImage()) {
+            iconView.setImageResource(currentWord.getImageResourceID());
+            iconView.setVisibility(View.VISIBLE);
+        }
+
+        else{
+            iconView.setVisibility(View.GONE);
+        }
+
+        View textContainer = listItemView.findViewById(R.id.text_container);
+        int color= ContextCompat.getColor(getContext(), mColorResourceID);
+        textContainer.setBackgroundColor(color);
         // Return the whole list item layout (containing 2 TextViews)
         // so that it can be shown in the ListView
         return listItemView;
-    }
 
+    }
 }
