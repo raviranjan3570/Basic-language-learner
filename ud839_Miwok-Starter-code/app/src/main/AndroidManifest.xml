@@ -9,13 +9,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ColorsActivity"
-            android:label="Colors"/>
+            android:label="Colors"
+            android:parentActivityName="com.example.android.miwok.MainActivity"/>
         <activity android:name=".FamilyActivity"
-            android:label="Family"/>
+            android:label="Family"
+            android:parentActivityName="com.example.android.miwok.MainActivity"/>
         <activity android:name=".NumbersActivity"
-            android:label="Numbers"/>
+            android:label="Numbers"
+            android:parentActivityName="com.example.android.miwok.MainActivity"/>
         <activity android:name=".PhrasesActivity"
-            android:label="Phrases"/>
+            android:label="Phrases"
+            android:parentActivityName="com.example.android.miwok.MainActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
