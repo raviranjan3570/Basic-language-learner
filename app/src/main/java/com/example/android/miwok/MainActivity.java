@@ -28,18 +28,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        getSupportActionBar().setElevation(0);
-
         super.onCreate(savedInstanceState);
 
         // Set the content of the activity to use the activity_main.xml layout file
+
         setContentView(R.layout.activity_main);
+
+        // provides elevation in tabbed layout
+
+        getSupportActionBar().setElevation(0);
+
         // Find the text view that shows numbers categories
         TextView numbers = (TextView) findViewById(R.id.numbers);
         TextView colors = (TextView) findViewById(R.id.colors);
         TextView family = (TextView) findViewById(R.id.family);
         TextView phrases = (TextView) findViewById(R.id.phrases);
+
         //Set a click listener on that view
+
         numbers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,15 +75,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Find the view pager that will allow the user to swipe between fragments
+
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
         // Create an adapter that knows which fragment should be shown on each page
+
         SimpleFragmentPagerAdapter adapter = new SimpleFragmentPagerAdapter(this, getSupportFragmentManager());
 
         // Set the adapter onto the view pager
+
         viewPager.setAdapter(adapter);
 
+        // Find the tab layout that shows the tabs
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+
+        // Connect the tab layout with the view pager. This will
+        //   1. Update the tab layout when the view pager is swiped
+        //   2. Update the view pager when a tab is selected
+        //   3. Set the tab layout's tab names with the view pager's adapter's titles
+        //      by calling onPageTitle()
+
         tabLayout.setupWithViewPager(viewPager);
     }
 }
