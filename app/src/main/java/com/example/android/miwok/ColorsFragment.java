@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -94,11 +95,11 @@ public class ColorsFragment extends Fragment {
 
         //get audioManager service
 
-        mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager = (AudioManager) Objects.requireNonNull(getActivity()).getSystemService(Context.AUDIO_SERVICE);
 
         // Array list with word object
 
-        final ArrayList<Word> words = new ArrayList<Word>();
+        final ArrayList<Word> words = new ArrayList<>();
         words.add(new Word("red", "weṭeṭṭi", R.drawable.color_red, R.raw.color_red));
         words.add(new Word("green", "chokokki", R.drawable.color_green, R.raw.color_green));
         words.add(new Word("brown", "ṭakaakki", R.drawable.color_brown, R.raw.color_brown));
@@ -114,7 +115,7 @@ public class ColorsFragment extends Fragment {
 
         // listView
 
-        ListView listView = (ListView) rootView.findViewById(R.id.list);
+        ListView listView = rootView.findViewById(R.id.list);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

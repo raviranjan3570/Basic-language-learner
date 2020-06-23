@@ -1,6 +1,6 @@
 package com.example.android.miwok;
 
-public class Word {
+class Word {
 
     /**
      * Default translation for the word
@@ -71,20 +71,5 @@ public class Word {
 
     int getAudioResourceId() {
         return mAudioResourceId;
-    }
-
-    /**
-     * Returns the string representation of the {@link Word} object.
-     * for printing current state of an object to thr logs
-     */
-
-    @Override
-    public String toString() {
-        return "Word{" +
-                "mDefaultTranslation='" + mDefaultTranslation + '\'' +
-                ", mMiwokTranslation='" + mMiwokTranslation + '\'' +
-                ", mIMageResourceId=" + mIMageResourceId +
-                ", mAudioResourceId=" + mAudioResourceId +
-                '}';
     }
 }
